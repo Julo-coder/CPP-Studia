@@ -1,4 +1,4 @@
-/.vscode
-/macbook/*.dSYM
+.vscode
+macbook/*.dSYM
 *.DS_Store
 .DS_Store
