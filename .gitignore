@@ -1,4 +1,4 @@
 .vscode
-/macbook/*.dSYM
+/macbook/main.dSYM
 *.DS_Store
-/macbook/*.DS_Store
+/macbook/.DS_Store
