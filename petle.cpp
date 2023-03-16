@@ -8,7 +8,7 @@ int main(){
     {
     case 1:{
         cout << "zad 1"<< endl;
-        const int arrSize = 11;
+        const int arrSize = 10;
         int numArr[arrSize];
         int maxNum = 0;
         int repeat = 0;
@@ -31,20 +31,16 @@ int main(){
         break;
     case 3:{
         cout << "zad 3" << endl;
-        const int arrS = 11;
+        const int arrS = 10;
         double minNumArr[arrS];
-        double minNum;
+        double smaller = 0;
+        double secSmaller = 0;
 
         for(int i = 0; i < arrS; i++){
             cin >> minNumArr[i];
-            minNum = minNumArr[0];
-            if(minNumArr[i] < minNum){
-                minNum = minNumArr[i];
-            }else if(minNumArr[i] == minNumArr[i+1]){
-                cout << "Not existing.";
-            }
+            smaller = minNumArr[i];
         }
-        cout << minNum;
+        cout << secSmaller;
     }
     break;
     default:
