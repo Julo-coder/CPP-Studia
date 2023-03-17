@@ -7,28 +7,33 @@ int main(){
     switch (userIn)
     {
     case 1:{
-        cout << "zad 1"<< endl;
-        const int arrSize = 10;
-        int numArr[arrSize];
-        int maxNum = 0;
-        int repeat = 0;
-        for(int i = 0; i < arrSize; i++){
-            cin >> numArr[i];
-            if(numArr[i] > maxNum){
-                maxNum = numArr[i];
-            }else if(maxNum == numArr[i]){
-                repeat += 1;
-            }
-        }
-        
-        cout << maxNum << " " << repeat;
-    }
-        
-        break;
-    case 2:{
+        const int size = 10;
+        int arr[size];
+        int maxVal = 0;
+        int count = 0;
 
+        for(int i = 0; i < size; i++){
+            cin >> arr[i];
+            if(arr[i] > maxVal){
+                maxVal = arr[i];
+            }
+            
+        }
+
+         for(int i = 0; i < size; i++){
+            if(arr[i] == maxVal){
+                count++;
+            }
+            
+        }
+        cout << maxVal << " " << count;
     }
+        
         break;
+    // case 2:{
+
+    // }
+    //     break;
     case 3:{
         cout << "zad 3" << endl;
         const int arrS = 10;
@@ -38,7 +43,17 @@ int main(){
 
         for(int i = 0; i < arrS; i++){
             cin >> minNumArr[i];
-            smaller = minNumArr[i];
+            smaller = minNumArr[0];
+            secSmaller = minNumArr[0];
+            if(smaller > minNumArr[i]){
+                smaller = minNumArr[i];
+            }else if(secSmaller > minNumArr[i]){
+                if(minNumArr[i] != smaller){
+                    secSmaller = minNumArr[i];
+                }
+            }
+            
+
         }
         cout << secSmaller;
     }
