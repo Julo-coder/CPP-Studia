@@ -22,12 +22,12 @@ void exOne(){
 }
 
 void exTwo(){
-    int arr1[5], arr2[5];
-    bool equal = true;
+    const int size = 5;
+    int arr1[size], arr2[size];
 
     for (int i = 0; i < 5; i++) {
-        std::string input;
-        std::cin >> input;
+        string input;
+        cin >> input;
 
         bool valid = true;
         for (char c : input) {
@@ -64,15 +64,31 @@ void exTwo(){
         }
     }
 
-    for (int i = 0; i < 5; i++) {
-        bool found = false;
-        for (int j = 0; j < 5; j++) {
-            if (arr1[i] == arr2[j]) {
-                found = true;
-                break;
-            }
+    int key, j;
+    for (int i = 1; i < size; i++) {
+        key = arr1[i];
+        j = i - 1;
+        while (j >= 0 && arr1[j] > key) {
+            arr1[j + 1] = arr1[j];
+            j--;
         }
-        if (!found) {
+        arr1[j + 1] = key;
+    }
+
+    for (int i = 1; i < size; i++) {
+        key = arr2[i];
+        j = i - 1;
+        while (j >= 0 && arr2[j] > key) {
+            arr2[j + 1] = arr2[j];
+            j--;
+        }
+        arr2[j + 1] = key;
+    }
+
+
+    bool equal = true;
+    for (int i = 0; i <size ; ++i) {
+        if (arr1[i] != arr2[i]) {
             equal = false;
             break;
         }
