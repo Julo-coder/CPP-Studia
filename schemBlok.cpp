@@ -45,10 +45,7 @@ void exTwo(){
     int arr1[sizeArr];
     int count = 0;
 
-    while(count < sizeArr){
-        string userIn;
-        cin >> userIn;
-    }
+    
 }
 
 void exThree(){
