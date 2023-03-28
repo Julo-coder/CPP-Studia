@@ -104,7 +104,54 @@ void exTwo(){
 }
 
 void exThree(){
-
+    string romanNumeral;
+    int arabic = 0;
+    int lastValue = 0;
+    cin >> romanNumeral;
+    
+    for (int i = romanNumeral.length() - 1; i >= 0; i--) {
+        char c = romanNumeral[i];
+        int value = 0;
+        
+        switch(c) {
+            case 'I':
+                value = 1;
+                break;
+            case 'V':
+                value = 5;
+                break;
+            case 'X':
+                value = 10;
+                break;
+            case 'L':
+                value = 50;
+                break;
+            case 'C':
+                value = 100;
+                break;
+            case 'D':
+                value = 500;
+                break;
+            case 'M':
+                value = 1000;
+                break;
+            default:
+                cout << "Wrong input data"<< endl;
+                break;
+        }
+        
+        if (value < lastValue) {
+            arabic -= value;
+        } else {
+            arabic += value;
+        }
+        
+        lastValue = value;
+    }
+    
+    
+    int arabicNumeral = arabic;
+    cout << "Converted " << romanNumeral << " to "<<arabicNumeral << endl;
 }
 
 int main(){
