@@ -1,6 +1,5 @@
 #include <iostream>
 using namespace std;
-unsigned int MASK = 0x80000000;
 void exOne(){
     /*
     Wyświetlanie liczby w reprezentacji binarnej bez wiodących zer:  
@@ -11,8 +10,8 @@ void exOne(){
     unsigned int userIn;
     cin >> userIn;
     bool isOne = true;
-    for(MASK; MASK; MASK >>= 1){
-        if (userIn & MASK) {
+    for(unsigned int mask = 0x80000000; mask; mask >>= 1){
+        if (userIn & mask) {
             isOne = false;
             cout << "1";
         } else if(!isOne){
