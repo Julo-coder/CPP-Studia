@@ -35,18 +35,23 @@ void exTwo(){
     */
     unsigned int userIn;
     cin >> userIn;
-    bool isOne = true;
-    int zeroCounter = 0;
-    for(MASK; MASK; MASK >>=1){
-        if (userIn & MASK) {
-            isOne = false;
-            cout << "First one";
-        } else if(!isOne){
-            zeroCounter++;
+    int count = 0;
+    int mask = 1;
+    bool foundLeftOne = false;
+
+    while (userIn != 0) {
+        if ((userIn & mask) != 0) {
+            if (!foundLeftOne) {
+                foundLeftOne = true;
+            } else {
+                break;
+            }
+        } else if (foundLeftOne) {
+            count++;
         }
+        userIn >>= 1;
     }
 
-    cout << zeroCounter;
 }
 
 void exThree(){
