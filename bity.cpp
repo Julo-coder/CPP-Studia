@@ -32,7 +32,7 @@ void exTwo(){
     np. dla argumentu wejściowego 10 program wyświetli 1. W zadaniu NIE można korzystać z tablicy. 
     Należy użyć co najmniej dwóch operatorów bitowych.
     */
-    unsigned int userIn;
+    unsigned int userIn = 0;
     cin >> userIn;
     int count = 0;
     int mask = 1;
@@ -50,10 +50,31 @@ void exTwo(){
         }
         userIn >>= 1;
     }
+    cout << count;
 
 }
 
 void exThree(){
+    unsigned int number;
+    cin >> number;
+    bool ispal=true;
+    unsigned int mask1 = 0x80000000;
+    unsigned int mask2 = 0x00000001;
+
+            
+
+    for(int i=0; i<32; ++i){
+        int mask_y=number bitand mask1;
+        int mask_z=number bitand mask2;
+        if(mask_y=mask_z){
+            continue;
+        }else{
+            ispal=false;
+        }
+        mask1>>=1;
+        mask2<<=1;
+    }
+    cout << ispal;
 
 }
 
@@ -69,9 +90,10 @@ int main(){
         exTwo();
         break;
     case 3:
+        exThree();
         break;
     default:
+        cout << "Wrong task number.";
         break;
     }
-    exOne();
 }
