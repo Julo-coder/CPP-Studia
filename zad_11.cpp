@@ -57,6 +57,45 @@ W funkcji main() proszę zdefiniować rozmiar tablicy równy 10 oraz stworzyć t
 Po wprowadzeniu elementów do tablicy, tablica jest sortowana przy użyciu wyżej opisanych funkcji.
 */
 
+void wyswietlanieTablic(int tab[], int rozm){
+    for(int i = 0; i < rozm; i++){
+        cout << tab[i] << " ";
+
+    }
+}
+void koktajlSort(int tablica[], int rozmiar) {
+    bool zamiana = true;
+    int start = 0;
+    int koniec = rozmiar - 1;
+
+    while (zamiana) {
+        // Przechodzenie od lewej do prawej strony
+        zamiana = false;
+        for (int i = start; i < koniec; i++) {
+            if (tablica[i] > tablica[i + 1]) {
+                swap(tablica[i], tablica[i + 1]);
+                zamiana = true;
+            }
+        }
+        koniec--;
+
+        // Jeśli nie było żadnej zamiany, sortowanie jest już ukończone
+        if (!zamiana) {
+            break;
+        }
+
+        // Przechodzenie od prawej do lewej strony
+        zamiana = false;
+        for (int i = koniec - 1; i >= start; i--) {
+            if (tablica[i] > tablica[i + 1]) {
+                swap(tablica[i], tablica[i + 1]);
+                zamiana = true;
+            }
+        }
+        wyswietlanieTablic(tablica, rozmiar);
+        start++;
+    }
+}
 
 int main(){
     int zad;
@@ -64,36 +103,42 @@ int main(){
     switch(zad){
         case 1:{
             const int rozmiar = 30;
-            char tab[rozmiar];
+            char tablica1[rozmiar];
             
             for(int i = 0; i < rozmiar; i++){
-                cin >> tab[i];
+                cin >> tablica1[i];
             }
-            sortowankoZad1(tab, rozmiar);
+            sortowankoZad1(tablica1, rozmiar);
         }
         break;
         case 2:{
             const int kolumna = 4;
             const int wiersz = 5;
-            int tab[kolumna][wiersz];
+            int tablica2[kolumna][wiersz];
             
             for(int i = 0; i < kolumna; i++){
                 for(int j = 0; j < wiersz; j++){
-                    cin >> tab[i][j];
+                    cin >> tablica2[i][j];
                 }
             }
             
-            sortowanieKwadTab(kolumna, wiersz, tab);
+            sortowanieKwadTab(kolumna, wiersz, tablica2);
             
             for(int w = 0; w < kolumna; w++){
                 for(int k = 0; k < wiersz; k++){
-                    cout << tab[w][k];
+                    cout << tablica2[w][k];
                 }
             }
         }
         break;
         case 3:{
-            
+            const int rozmairKoktajl = 10;
+            int tablica3[rozmairKoktajl];
+
+            for(int i = 0; i < rozmairKoktajl; i++){
+                cin >> tablica3[i];
+            }
+            koktajlSort(tablica3, rozmairKoktajl);
         }
         break;
         default:
