@@ -28,23 +28,37 @@ W funkcji main() program wyświetla TYLKO wynik działania funkcji czyli posorto
 Tablica ma być wyświetlana wierszami. Uwaga: przepisywanie tablicy dwuwymiarowej do tablicy jednowymiarowej jest zabronione.
 */
 void sortowanieKwadTab(int wejKolumn, int wejWiersz, int tablica[][5]){
-    int nowaKol, nowyWier;
-    for(int kol = 0; kol < wejKolumn - 1; kol++){
-        nowaKol = kol;
-        for(int wier = 0; wier < wejWiersz ; wier++){
-            nowyWier = wier;
-            for(int nkol = nowaKol + 1; nkol < wejKolumn; nkol++){
-                for(int nwier = nowyWier + 1; nwier < wejWiersz; nwier++){
-                    if(tablica[nkol][nwier] < tablica[nowaKol][nowyWier]){
-                        nowaKol = nkol;
-                        nowyWier = nwier;
+    // int nowaKol, nowyWier;
+    // for(int kol = 0; kol < wejKolumn; kol++){
+    //     nowaKol = kol;
+    //     for(int wier = 0; wier < wejWiersz; wier++){
+    //         nowyWier = wier;
+    //         for(int nkol = nowaKol; nkol < wejKolumn; nkol++){
+    //             for(int nwier = nowyWier; nwier < wejWiersz; nwier++){
+    //                 if(tablica[nkol][nwier] < tablica[nowaKol][nowyWier]){
+    //                     nowaKol = nkol;
+    //                     nowyWier = nwier;
+    //                 }
+    //             }
+    //         }
+    //         if(nowaKol != kol || nowyWier != wier){
+    //             swap(tablica[kol][wier], tablica[nowaKol][nowyWier]);
+    //         }
+    //     }
+    // }
+    for (int kol = 0; kol < wejKolumn; kol++) {
+        for (int wier = 0; wier < wejWiersz; wier++) {
+            for (int nkol = kol; nkol < wejKolumn; nkol++) {
+                int startWier = (nkol == kol) ? wier + 1 : 0;
+
+                for (int nwier = startWier; nwier < wejWiersz; nwier++) {
+                    if (tablica[nkol][nwier] < tablica[kol][wier]) {
+                        int temp = tablica[kol][wier];
+                        tablica[kol][wier] = tablica[nkol][nwier];
+                        tablica[nkol][nwier] = temp;
                     }
                 }
             }
-            if(nowaKol != kol && nowyWier != wier){
-                swap(tablica[kol][wier], tablica[nowaKol][nowyWier]);
-            }
-            
         }
     }
 }
@@ -72,7 +86,7 @@ void koktajlSort(int tablica[], int rozmiar) {
         // Przechodzenie od lewej do prawej strony
         zamiana = false;
         for (int i = start; i < koniec; i++) {
-            if (tablica[i] > tablica[i + 1]) {
+            if (tablica[i] < tablica[i + 1]) {
                 swap(tablica[i], tablica[i + 1]);
                 zamiana = true;
             }
@@ -87,15 +101,16 @@ void koktajlSort(int tablica[], int rozmiar) {
         // Przechodzenie od prawej do lewej strony
         zamiana = false;
         for (int i = koniec - 1; i >= start; i--) {
-            if (tablica[i] > tablica[i + 1]) {
+            if (tablica[i] < tablica[i + 1]) {
                 swap(tablica[i], tablica[i + 1]);
                 zamiana = true;
             }
         }
-        wyswietlanieTablic(tablica, rozmiar);
         start++;
+        wyswietlanieTablic(tablica, rozmiar);
     }
 }
+
 
 int main(){
     int zad;
@@ -103,30 +118,30 @@ int main(){
     switch(zad){
         case 1:{
             const int rozmiar = 30;
-            char tablica1[rozmiar];
+            char tab[rozmiar];
             
             for(int i = 0; i < rozmiar; i++){
-                cin >> tablica1[i];
+                cin >> tab[i];
             }
-            sortowankoZad1(tablica1, rozmiar);
+            sortowankoZad1(tab, rozmiar);
         }
         break;
         case 2:{
             const int kolumna = 4;
             const int wiersz = 5;
-            int tablica2[kolumna][wiersz];
+            int tab[kolumna][wiersz];
             
             for(int i = 0; i < kolumna; i++){
                 for(int j = 0; j < wiersz; j++){
-                    cin >> tablica2[i][j];
+                    cin >> tab[i][j];
                 }
             }
             
-            sortowanieKwadTab(kolumna, wiersz, tablica2);
+            sortowanieKwadTab(kolumna, wiersz, tab);
             
             for(int w = 0; w < kolumna; w++){
                 for(int k = 0; k < wiersz; k++){
-                    cout << tablica2[w][k];
+                    cout << tab[w][k] << " ";
                 }
             }
         }
