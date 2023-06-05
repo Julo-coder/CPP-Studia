@@ -27,7 +27,7 @@ Jeśli użytkownik zamiast liczby wprowadzi inny znak lub znaki to należy zasto
 */
 
 double iloczTab(double tab[], int rozm){
-     if (rozm == 0) {
+    if (rozm == 0) {
         return 1.0;
     } else {
         return tab[0] * iloczTab(tab + 1, rozm - 1);
