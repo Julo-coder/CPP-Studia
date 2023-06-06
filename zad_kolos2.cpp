@@ -6,9 +6,39 @@ zad 1
 dwuwymiarowa tablica typu int. Zastępowanie warotości danej liczby jej wartością bitową.
 */
 
+/*
+zad 2
+Iloczyn przystych liczb rekurencyjna funkcja zwaracjąca illoczyn liczb parzystych zprzedziału 2 do N (liczba jako argument funkcji). 
+Jeśli argument jest nie poprawny N przyjmuje wartość 0;
+*/
 
+/*zad 3
+Sortowanie poprze wstawienie. 
+*/
 
-void zmianaLiczby(int tablica[][4], int wier, int kol){
+/*Kolos numr 1*/
+void sortowankoRosnace(int tab[], int rozm){
+    int key, j;
+    for (int i = 1; i < rozm; i++) {
+        key = tab[i];
+        j = i - 1;
+        while (j >= 0 && tab[j] > key) {
+            tab[j + 1] = tab[j];
+            j = j - 1;
+        }
+        tab[j + 1] = key;
+        for (int z = 0; z < rozm; z++) {
+            cout << tab[z] << " ";
+        }
+        cout << endl;
+    }
+
+    for (int z = 0; z < rozm; z++) {
+        cout << tab[z] << " ";
+    }
+}
+
+void zmianaLiczbyNaJedynki(int tablica[][4], int wier, int kol){
     int jedynki = 0;
     for(int i = 0; i < wier; i++){
         for(int j = 0; j < kol; j++){
@@ -31,22 +61,13 @@ void zmianaLiczby(int tablica[][4], int wier, int kol){
     
 }
 
-/*
-zad 2
-Iloczyn przystych liczb
-rekurencyjna funkcja zwaracjąca illoczyn liczb parzystych zprzedziału 2 do N (liczba jako argument funkcji). Jeśli argument jest nie poprawny N przyjmuje wartość 0;
-*/
-
-/*zad 3
-Sortowanie poprze wstawienie. 
-*/
-
-void sortowankoRazDwaTrzy(int tab[], int rozm){
+/*Kolos numr 2*/
+void sortowankoMalejace(int tab[], int rozm){
     int key, j;
     for (int i = 1; i < rozm; i++) {
         key = tab[i];
         j = i - 1;
-        while (j >= 0 && tab[j] > key) {
+        while (j >= 0 && tab[j] < key) {
             tab[j + 1] = tab[j];
             j = j - 1;
         }
@@ -62,6 +83,30 @@ void sortowankoRazDwaTrzy(int tab[], int rozm){
     }
 }
 
+void zmianaLiczbyNaZera(int tablica[][4], int wier, int kol){
+    int zera = 0;
+    for(int i = 0; i < wier; i++){
+        for(int j = 0; j < kol; j++){
+            for(unsigned maska = 0x80000000; maska; maska >>= 1){
+                if(tablica[i][j] & maska){
+                    
+                }else{
+                    zera++;
+                }
+            }
+            tablica[i][j] = zera;
+            zera = 0;
+        }
+    }
+
+    for(int k = 0; k < wier; k++){
+        for(int z = 0; z < kol; z++){
+            cout << tablica[k][z] << " ";
+        }
+        cout << "|" << " ";
+    }
+    
+}
 
 int main(){
     int zad;
@@ -76,7 +121,8 @@ int main(){
                 cin >> tablica[i][j];
             }
         }
-        zmianaLiczby(tablica, wier, kol);
+        // zmianaLiczbyNaJedynki(tablica, wier, kol);
+        //zmianaLiczbyNaZera(tablica, wier, kol);
     }
         break;
     case 2:{
@@ -91,7 +137,8 @@ int main(){
             cin >> tablica[k];
         }
 
-        sortowankoRazDwaTrzy(tablica, rozm);
+        sortowankoRosnace(tablica, rozm);
+        //sortowankoMalejace(tablica, rozm);
     }
         break;
     default:
