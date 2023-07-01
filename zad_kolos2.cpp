@@ -89,11 +89,10 @@ void zmianaLiczbyNaZera(int tablica[][4], int wier, int kol){
         for(int j = 0; j < kol; j++){
             for(unsigned maska = 0x80000000; maska; maska >>= 1){
                 if(tablica[i][j] & maska){
-                    
+
                 }else{
                     zera++;
                 }
-            }
             tablica[i][j] = zera;
             zera = 0;
         }
@@ -105,7 +104,7 @@ void zmianaLiczbyNaZera(int tablica[][4], int wier, int kol){
         }
         cout << "|" << " ";
     }
-    
+    }
 }
 
 int main(){
